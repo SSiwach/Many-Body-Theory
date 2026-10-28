@@ -1,5 +1,5 @@
 
-# — Angular Momentum Coupling
+#  Angular Momentum Coupling
 
 **Study notes and companion program:** `angular_momentum.py`
 
