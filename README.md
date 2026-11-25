@@ -118,9 +118,7 @@ A Clebsch–Gordan coefficient can be nonzero only when the following conditions
 
 1. **Projection conservation:**
 
-   $$
-   m_1+m_2=m.
-   $$
+   $$ m_1+m_2=m. $$
 3. **Triangle condition:**
    $$
    |j_1-j_2|\leq j\leq j_1+j_2.
