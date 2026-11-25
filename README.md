@@ -242,14 +242,12 @@ $$
 
 The Wigner 3j symbol is a symmetric reformulation of a Clebsch–Gordan coefficient:
 
-$$
-\boxed{
+$$ \boxed{
 \begin{pmatrix}
 j_1&j_2&j_3\\
 m_1&m_2&m_3
 \end{pmatrix}
-=
-\frac{(-1)^{j_1-j_2-m_3}}{\hat j_3}
+= \frac{(-1)^{j_1-j_2-m_3}}{\hat j_3}
 \langle j_1m_1,j_2m_2\mid j_3,-m_3\rangle.
 }
 $$
