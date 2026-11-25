@@ -17,9 +17,9 @@ These tools are essential for describing angular momentum in quantum mechanics a
 
 A vector operator
 
-\begin{equation}
+$$
 \mathbf{J}=(J_x,J_y,J_z)
-\end{equation}
+$$
 
 is an angular momentum operator if its components are Hermitian and satisfy the angular momentum commutation relations:
 
