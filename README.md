@@ -621,14 +621,134 @@ The companion program, `angular_momentum.py`, implements calculations and tests 
 | 1.16 | `six_j()` evaluates the two requested 6j symbols. |
 | 1.22 | `nine_j()` evaluates the 9j symbol used in the $LS$-to-$jj$ transformation. |
 
-## 8\. Summary
+## 2. Rotations and Wigner D functions
+A rotation of the coordinate axes (Euler angles $\alpha,\beta,\gamma$) acts on
+vector components through an orthogonal matrix, $V'=RV$, and on second-rank
+Cartesian tensors by a similarity transformation $T'=RTR^{-1}$.
 
-Angular momentum coupling provides a systematic way to combine individual angular momenta into a total angular momentum.
+The same rotation induces a unitary operator $U(R)$ on the $(2j+1)$-dimensional
+space of states $|jm\rangle$. Its matrix elements are the Wigner D functions,
 
-The central tools are:
+$$D^{j}_{m'm}(\alpha,\beta,\gamma)=\langle jm'|U(R)|jm\rangle,\qquad
+U(R)|jm\rangle=\sum_{m'}D^{j}_{m'm}(R)|jm'\rangle .$$
 
-- **Clebsch–Gordan coefficients:** transform between uncoupled and coupled bases for two angular momenta.
-- **3j symbols:** express the same coupling information in a more symmetric form.
-- **6j symbols:** transform between different coupling orders for three angular momenta.
-- **9j symbols:** transform between different coupling schemes for four angular momenta.
+Special cases: $D^{l}_{m0}\propto Y^*_{lm}$ and $D^{l}_{00}=P_l(\cos\beta)$.
 
+## 3. Spherical tensor operators
+A set of $2L+1$ operators $T_{LM}$, $M=-L,\dots,L$, is a **spherical tensor of
+rank $L$** if it rotates like the states $|LM\rangle$:
+
+$$U(R)\,T_{LM}\,U^\dagger(R)=\sum_{M'}T_{LM'}D^{L}_{M'M}(R).$$
+
+Equivalently (and much more practical for checking):
+
+$$[J_z,T_{LM}]=M\,T_{LM},\qquad
+[J_\pm,T_{LM}]=\sqrt{(L\pm M+1)(L\mp M)}\;T_{L,M\pm1}.$$
+
+Names: $L=0$ scalar/monopole, $L=1$ vector/dipole, $L=2$ quadrupole,
+$L=3$ octupole.
+
+### Spherical components of a vector
+The (covariant) components used throughout the book are
+
+$$V_{\pm1}=\mp\tfrac{1}{\sqrt2}(V_x\pm iV_y),\qquad V_0=V_z ,$$
+
+with contravariant partners $V^{\mu}=(-1)^{\mu}V_{-\mu}$. For the position
+vector, $r_\mu=\sqrt{4\pi/3}\,r\,Y_{1\mu}(\theta,\varphi)$ — so $Y_1$ behaves as a
+vector, and in general $Y_\lambda$ is a spherical tensor of rank $\lambda$.
+
+Rank-1 spherical tensors you meet constantly: $J_\mu$, $r_\mu$, $\sigma_\mu$, $Y_{1\mu}$.
+
+Dot and cross products in spherical form:
+
+$$\mathbf A\cdot\mathbf B=\sum_\mu(-1)^\mu A_\mu B_{-\mu},\qquad
+[\mathbf A\times\mathbf B]_\mu=-i\sqrt2\sum_{\nu\nu'}(1\nu1\nu'|1\mu)A_\nu B_{\nu'} .$$
+
+A Cartesian rank-2 tensor is *reducible*: trace → scalar, antisymmetric part →
+vector, symmetric traceless part → quadrupole. Spherical tensors are irreducible.
+
+## 4. The Wigner–Eckart theorem
+For a rank-$L$ tensor between states of good angular momentum,
+
+$$\langle\xi'j'm'|T_{LM}|\xi jm\rangle
+=\hat j'^{\,-1}(jmLM|j'm')\,(\xi'j'\|T_L\|\xi j)
+=(-1)^{j'-m'}\begin{pmatrix}j'&L&j\\-m'&M&m\end{pmatrix}(\xi'j'\|T_L\|\xi j).$$
+
+(Racah / Edmonds convention for the reduced matrix element $(\;\|\;\|\;)$.)
+
+Consequences:
+* **Selection rules**: non-zero only if $\Delta(jLj')$ and $m+M=m'$ —
+  angular momentum conservation built in.
+* **One matrix element fixes all**: knowing it for one $(m_0,M_0,m_0')$ gives
+  every other by a ratio of CG coefficients.
+* **Hermitian tensors** $(T_{LM})^\dagger=(-1)^M T_{L,-M}$ satisfy
+  $(\xi j\|T_L\|\xi'j')=(-1)^{j-j'}(\xi'j'\|T_L\|\xi j)^*$.
+
+### Basic reduced matrix elements ($\hbar=1$)
+| operator | reduced matrix element |
+|---|---|
+| identity | $(j'\|1\|j)=\delta_{jj'}\hat j$ |
+| $\mathbf J$ | $(j'\|J\|j)=\delta_{jj'}\sqrt{j(j+1)(2j+1)}$ |
+| $Y_L$ | $(l'\|Y_L\|l)=(-1)^{l'}\dfrac{\hat l'\hat L\hat l}{\sqrt{4\pi}}\begin{pmatrix}l'&L&l\\0&0&0\end{pmatrix}$ |
+| spin $\tfrac12$ | $(\tfrac12\|S\|\tfrac12)=\sqrt{3/2}$, $(\tfrac12\|\sigma\|\tfrac12)=\sqrt6$ |
+
+## 5. Pauli matrices
+$\mathbf S=\tfrac12\boldsymbol\sigma$ with
+
+$$\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\;
+\sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\;
+\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.$$
+
+$[\sigma_i,\sigma_j]=2i\epsilon_{ijk}\sigma_k$, $\{\sigma_i,\sigma_j\}=2\delta_{ij}$,
+$(\boldsymbol\sigma\cdot\mathbf A)(\boldsymbol\sigma\cdot\mathbf B)=\mathbf A\cdot\mathbf B+i\boldsymbol\sigma\cdot(\mathbf A\times\mathbf B)$, etc.
+
+In spherical components:
+
+$$[\sigma_\mu,\sigma_\nu]=-2\sqrt2\,(1\mu1\nu|1M)\sigma_M,\qquad
+\{\sigma_\mu,\sigma_\nu\}=2(-1)^\mu\delta_{\mu,-\nu},\qquad
+\sigma_\mu\sigma_\nu=(-1)^\mu\delta_{\mu,-\nu}-2\sqrt2(1\mu1\nu|1M)\sigma_M .$$
+
+## 6. Coupled tensor operators
+Tensor product: $[T_{L_1}S_{L_2}]_{LM}=\sum(L_1M_1L_2M_2|LM)T_{L_1M_1}S_{L_2M_2}$.
+Scalar product: $T_L\cdot S_L=(-1)^L\hat L[T_LS_L]_{00}=\sum_M(-1)^MT_{LM}S_{L,-M}$.
+Cross product: $(\mathbf T\times\mathbf S)_M=-i\sqrt2[T_1S_1]_{1M}$.
+
+### Theorem I — operators in different spaces (9j)
+If $T_{L_1}$ acts on space 1 and $S_{L_2}$ on space 2,
+
+$$(j_1j_2j\|[T_{L_1}S_{L_2}]_L\|j_1'j_2'j')=\hat j\hat L\hat j'
+\begin{Bmatrix}j_1&j_2&j\\j_1'&j_2'&j'\\L_1&L_2&L\end{Bmatrix}
+(j_1\|T_{L_1}\|j_1')(j_2\|S_{L_2}\|j_2').$$
+
+Scalar-product special case:
+
+$$(j_1j_2j\|T_L\cdot S_L\|j_1'j_2'j')=\delta_{jj'}(-1)^{j_2+j+j_1'}\hat j
+\begin{Bmatrix}j_1&j_2&j\\j_2'&j_1'&L\end{Bmatrix}(j_1\|T_L\|j_1')(j_2\|S_L\|j_2').$$
+
+Applied to one nucleon in $|l\tfrac12 j\rangle$ (radial part factored out):
+
+$$(l\tfrac12j\|\sigma\|l'\tfrac12j')=\sqrt6\,\delta_{ll'}\hat j\hat j'(-1)^{l+j+3/2}
+\begin{Bmatrix}\tfrac12&\tfrac12&1\\j&j'&l\end{Bmatrix}$$
+
+$$(l\tfrac12j\|Y_\lambda\|l'\tfrac12j')=\frac{1}{\sqrt{4\pi}}(-1)^{j'-\frac12+\lambda}
+\frac{1+(-1)^{l+l'+\lambda}}{2}\hat j\hat j'\hat\lambda
+\begin{pmatrix}j&j'&\lambda\\\tfrac12&-\tfrac12&0\end{pmatrix}$$
+
+$$(l\tfrac12j\|L\|l'\tfrac12j')=\delta_{ll'}\hat j\hat j'\sqrt{l(l+1)(2l+1)}(-1)^{l+j'+3/2}
+\begin{Bmatrix}l&l&1\\j'&j&\tfrac12\end{Bmatrix}$$
+
+Diagonal closed forms:
+
+$$(l\tfrac12j\|\sigma\|l\tfrac12j)=\sqrt{\tfrac{2j+1}{j(j+1)}}\big[j(j+1)-l(l+1)+\tfrac34\big],\qquad
+(l\tfrac12j\|L\|l\tfrac12j)=\sqrt{\tfrac{2j+1}{4j(j+1)}}\big[j(j+1)+l(l+1)-\tfrac34\big].$$
+
+### Theorem II — operators in the same space (6j + completeness)
+
+$$(\alpha'j'\|[T_{L_1}S_{L_2}]_L\|\alpha j)=(-1)^{j+L+j'}\hat L\sum_{\alpha''j''}
+\begin{Bmatrix}L_1&L_2&L\\j&j'&j''\end{Bmatrix}
+(\alpha'j'\|T_{L_1}\|\alpha''j'')(\alpha''j''\|S_{L_2}\|\alpha j),$$
+
+with scalar-product case
+$(\alpha'j'\|T_L\cdot S_L\|\alpha j)=\delta_{jj'}\hat j^{-1}\sum_{\alpha''j''}(-1)^{j-j''}
+(\alpha'j\|T_L\|\alpha''j'')(\alpha''j''\|S_L\|\alpha j)$ and e.g.
+$(l'\|L^2\|l)=\delta_{ll'}\,l(l+1)\hat l$.
