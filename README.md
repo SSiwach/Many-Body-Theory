@@ -117,14 +117,15 @@ Here, $\langle j_1m_1,j_2m_2\mid jm\rangle$ denotes a Clebsch–Gordan coefficie
 A Clebsch–Gordan coefficient can be nonzero only when the following conditions are satisfied.
 
 1. **Projection conservation:**
+
    $$
    m_1+m_2=m.
    $$
-2. **Triangle condition:**
+3. **Triangle condition:**
    $$
    |j_1-j_2|\leq j\leq j_1+j_2.
    $$
-3. **Allowed total angular momenta:**
+4. **Allowed total angular momenta:**
    $$
    j=|j_1-j_2|,\ |j_1-j_2|+1,\ldots,j_1+j_2.
    $$
