@@ -750,3 +750,123 @@ with scalar-product case
 $(\alpha'j'\|T_L\cdot S_L\|\alpha j)=\delta_{jj'}\hat j^{-1}\sum_{\alpha''j''}(-1)^{j-j''}
 (\alpha'j\|T_L\|\alpha''j'')(\alpha''j''\|S_L\|\alpha j)$ and e.g.
 $(l'\|L^2\|l)=\delta_{ll'}\,l(l+1)\hat l$.
+
+
+## 1. From A interacting nucleons to A quasiparticles
+The A-body Schrödinger equation for strongly interacting point nucleons
+cannot be solved exactly (A ≳ 10). The strategy is to trade strongly
+interacting *particles* for weakly interacting *quasiparticles*. The simplest
+version is the mean field: add and subtract a one-body potential,
+
+$$H=T+V=\underbrace{\sum_i\big[t(\mathbf r_i)+v(\mathbf r_i)\big]}_{H_{MF}=\sum_i h(\mathbf r_i)}
++\underbrace{\Big[\sum_{i<j}v(\mathbf r_i,\mathbf r_j)-\sum_iv(\mathbf r_i)\Big]}_{V_{RES}} .$$
+
+$H_{MF}$ separates: the A-body problem becomes one one-body problem
+$h\phi_\alpha=\varepsilon_\alpha\phi_\alpha$, with product (Hartree) or
+antisymmetrised product (Hartree–Fock, **Slater determinant**) wave functions
+and $E=\sum_i\varepsilon_{\alpha_i}$. The residual interaction $V_{RES}$ is
+left for perturbation theory or the methods of later chapters.
+
+Picture: each nucleon feels the time-averaged field of the other $A-1$ — a
+useful intuition, not a computable recipe.
+
+## 2. Self-consistent vs phenomenological mean field
+*Hartree–Fock*: minimise $\langle\Psi_0|H|\Psi_0\rangle$ over the orbitals with
+normalisation as a constraint. The Lagrange multipliers turn out to be the
+single-particle energies, and one gets a Schrödinger-like equation whose
+potential is a functional of the unknown orbitals. It is nonlinear and solved
+by iteration until self-consistency: $\phi^{(0)}\to V^{(0)}\to\phi^{(1)}\to V^{(1)}\to\cdots$
+(derived properly in Sect. 4.5).
+
+*Phenomenological shortcut*: just choose the well.
+
+| potential | form | parameters |
+|---|---|---|
+| harmonic oscillator | $v_{HO}=-V_1+\tfrac12 m_N\omega^2r^2$ | $\hbar\omega$, $V_1$ |
+| Woods–Saxon | $v_{WS}=-\dfrac{V_0}{1+e^{(r-R)/a}}$ | $R=1.27A^{1/3}$ fm, $a=0.67$ fm, $V_0=\big(51\pm33\tfrac{N-Z}{A}\big)$ MeV (+ protons, − neutrons) |
+
+An HO can be made "equivalent" to a WS well by matching the major-shell
+spacing ($\hbar\omega$) and the $0s$ energy ($V_1$). Near the bottom the wave
+functions agree well; near zero energy WS functions have long tails that HO
+functions lack.
+
+## 3. Spin–orbit interaction and magic numbers
+A central well alone gives shell gaps at 2, 8, 20, **40, 70, 112** — wrong
+beyond 20. Adding $v_{LS}(r)\,\mathbf L\cdot\mathbf S$ splits each $l$ into
+$j=l\pm\tfrac12$ and produces the observed **2, 8, 20, 28, 50, 82, 126**.
+
+Nuclear spin–orbit is *not* the atomic (electromagnetic, meV) effect: it is of
+MeV size, comparable to level spacings, and has the opposite ordering
+($j=l+\tfrac12$ lower). Its origin is treated phenomenologically:
+
+$$v_{LS}(r)=v^{(0)}_{LS}\Big(\frac{r_0}{\hbar}\Big)^2\frac1r\frac{d}{dr}\frac{1}{1+e^{(r-R)/a}},\qquad v^{(0)}_{LS}=0.44\,V_0 ,$$
+
+peaked at the surface because of the derivative.
+
+Since $J^2=L^2+2\mathbf L\cdot\mathbf S+S^2$, in the coupled basis $|l\tfrac12jm\rangle$
+
+$$\mathbf L\cdot\mathbf S=\tfrac12\big[j(j+1)-l(l+1)-\tfrac34\big]\hbar^2,$$
+
+so the spin–orbit term is diagonal and the single-particle states are the
+coupled states $|nl\tfrac12jm\rangle$. Splitting of the partners:
+
+$$\Delta^{LS}_{nl}=\varepsilon_{nlj_-}-\varepsilon_{nlj_+}\approx-(l+\tfrac12)\hbar^2C_{nl},\qquad
+C_{nl}=\int_0^\infty r^2dr\,f^2_{nl}(r)v_{LS}(r)<0 ,$$
+
+i.e. roughly linear in $l$ (exactly linear if $v_{LS}$ is a constant).
+
+## 4. Solving the Woods–Saxon problem
+Full single-particle Hamiltonian (protons also feel the uniformly charged
+sphere Coulomb potential $v_C$):
+
+$$h=-\frac{\hbar^2}{2m_N}\Big[\nabla_r^2-\frac{L^2/\hbar^2}{r^2}\Big]+v_{WS}+v_C+v_{LS}\,\mathbf L\cdot\mathbf S,\qquad
+v_C(r)=\frac{Ze^2}{4\pi\epsilon_0}\begin{cases}\dfrac{3-(r/R)^2}{2R}&r\le R\\[4pt]\dfrac1r&r>R\end{cases}$$
+
+The radial equation $h_{lj}(r)f_{nlj}(r)=\varepsilon_{nlj}f_{nlj}(r)$ is solved
+by expanding in **harmonic oscillator radial functions**,
+
+$$f_{nlj}(r)=\sum_\nu A^{(nlj)}_\nu g_{\nu l}(r),\qquad
+g_{nl}(r)=\sqrt{\frac{2\,n!}{b^3\Gamma(n+l+\frac32)}}\Big(\frac rb\Big)^l e^{-r^2/2b^2}L^{(l+1/2)}_n(r^2/b^2),$$
+
+with $N=2n+l$, $\varepsilon_{nl}=-V_1+(N+\tfrac32)\hbar\omega$, $n$ = number of
+nodes (0,1,2,…), phase $g_{nl}\to r^l>0$ at the origin, and oscillator length
+
+$$b=\frac{\hbar c}{\sqrt{(m_Nc^2)(\hbar\omega)}}\approx\frac{197.33}{\sqrt{940\,\hbar\omega[\mathrm{MeV}]}}\ \mathrm{fm},\qquad
+\hbar\omega=45A^{-1/3}-25A^{-2/3}\ \mathrm{MeV}\ \text{(Blomqvist–Molinari)}.$$
+
+(The cruder $\hbar\omega=41A^{-1/3}$, $b=1.005A^{1/6}$ fm is also common.)
+
+Using the oscillator equation to eliminate $\nabla_r^2$, the matrix to
+diagonalise is
+
+$$\langle\nu'|h_{lj}|\nu\rangle=\int_0^\infty r^2dr\,g_{\nu'l}g_{\nu l}\Big[\frac{\hbar^2}{2m_N}\Big(\frac{4\nu+2l+3}{b^2}-\frac{r^2}{b^4}\Big)
++v_{WS}+v_C+\tfrac12\big(j(j+1)-l(l+1)-\tfrac34\big)\hbar^2v_{LS}\Big].$$
+
+Findings (Tables 3.1–3.4 for $^{16}$O, $^{40}$Ca): the dominant component is
+$\nu=n$; deep states are almost pure oscillator states; $\nu\le8$ converges.
+Some high $l>0$ states sit at *positive* energy but are quasi-bound behind the
+centrifugal barrier $v_{cf}(R)\approx13.2A^{-2/3}l(l+1)$ MeV (plus, for
+protons, the Coulomb barrier $v_C(R)\approx1.15ZA^{-1/3}$ MeV).
+
+## 5. Many-nucleon configurations
+Baranger notation: $|\alpha\rangle=|a\,m_\alpha\rangle$, $a=n_al_aj_a$, with
+
+$$\phi_\alpha(\mathbf x)=\eta_a\,g_{n_al_a}(r)\,[Y_{l_a}(\Omega)\chi_{1/2}]_{j_am_\alpha},\qquad
+\eta_a=\begin{cases}1&\text{Condon–Shortley}\\ i^{l_a}&\text{Biedenharn–Rose}\end{cases}$$
+
+(CS is used in the book; BR makes BCS amplitudes positive, $u^{(CS)}_a=(-1)^{l_a}u^{(BR)}_a$.)
+
+Orbitals are orthonormal and complete. The A-nucleon wave function is a
+product of a proton and a neutron Slater determinant,
+
+$$\Psi_{\pi_1\cdots\pi_Z}=\frac{1}{\sqrt{Z!}}\det\big[\phi_{\pi_i}(\mathbf x_k)\big],$$
+
+which is antisymmetric under any exchange and vanishes if two labels coincide
+— the Pauli principle. Each determinant = one configuration; its mean-field
+energy is the sum of occupied single-particle energies, e.g. for the 10
+protons of Ne: $E_0=2\varepsilon_{0s_{1/2}}+4\varepsilon_{0p_{3/2}}+2\varepsilon_{0p_{1/2}}+2\varepsilon_{0d_{5/2}}$,
+and the first excited configuration lifts one proton $0d_{5/2}\to1s_{1/2}$.
+The highest occupied level defines the **Fermi energy** (one for protons, one
+for neutrons). Slater determinants are orthonormal and complete in the
+Z-particle space.
+
