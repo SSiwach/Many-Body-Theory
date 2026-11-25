@@ -70,8 +70,7 @@ $$
 Their action on angular momentum eigenstates is
 
 $$
-J_\pm\lvert jm\rangle
-=
+J_\pm\lvert jm\rangle =
 \hbar\sqrt{(j\mp m)(j\pm m+1)}
 \lvert j,m\pm1\rangle.
 $$
