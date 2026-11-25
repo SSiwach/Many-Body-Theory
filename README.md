@@ -210,11 +210,8 @@ $$
 For two identical angular momentum magnitudes coupled to zero,
 
 $$
-\boxed{
-\langle jm,jm'\mid 00\rangle
-=
-\frac{(-1)^{j-m}}{\hat j}\delta_{m,-m'},
-}
+\boxed{\langle jm,jm'\mid 00\rangle
+=\frac{(-1)^{j-m}}{\hat j}\delta_{m,-m'},}
 $$
 
 where
