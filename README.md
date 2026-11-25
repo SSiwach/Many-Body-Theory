@@ -1,8 +1,6 @@
 
 #  Angular Momentum Coupling
 
-**Study notes and companion program:** `angular_momentum.py`
-
 ## 1\. Why Couple Angular Momenta?
 
 Nuclei, like atoms and molecules, are built from constituents that each carry orbital angular momentum and spin. The total angular momentum of the system is assembled from these contributions.
